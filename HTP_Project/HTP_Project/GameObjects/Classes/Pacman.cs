@@ -1,4 +1,5 @@
 ﻿using HTP_Project.GameObjects.BaseObjects;
+using HTP_Project.GameObjects.CollectionOfObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
@@ -8,17 +9,14 @@ namespace HTP_Project.GameObjects.Classes
 {
     class Pacman : BaseGameObject, IProtagonist
     {
-        List<IGameObject> list;
-
-
+        
 
         public Pacman()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
             Animation.Location = new Coordinate(0.5f, 13f);
-            list = new List<IGameObject>();
-            list.Add(new BigCoin());
+           
 
         }
 
@@ -38,7 +36,7 @@ namespace HTP_Project.GameObjects.Classes
 
         public override void Update()
         {
-            Collide(list);
+         
 
             var MoveRight = new Coordinate(0.1f, 0.0f);
             var MoveLeft = MoveRight;

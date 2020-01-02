@@ -54,6 +54,7 @@
     <Compile Include="GameObjects\Classes\BigCoin.cs" />
     <Compile Include="GameObjects\Classes\Coin.cs" />
     <Compile Include="GameObjects\Classes\Pacman.cs" />
+    <Compile Include="GameObjects\CollectionOfObjects\ObjectCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

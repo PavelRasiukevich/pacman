@@ -1,4 +1,5 @@
 ﻿using HTP_Project.GameObjects.Classes;
+using HTP_Project.GameObjects.CollectionOfObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 
@@ -8,7 +9,7 @@ namespace HTP_Project
     {
         static void Main(string[] args)
         {
-            Engine.Run(new IGameObject[] { new Background(), new Coin(), new Pacman(), new BigCoin()});
+            Engine.Run(ObjectCollection.CreateObjects());
 
 
         }
