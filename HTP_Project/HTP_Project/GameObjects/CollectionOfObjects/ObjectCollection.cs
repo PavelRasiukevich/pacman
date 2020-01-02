@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HTP_Project.GameObjects.CollectionOfObjects
 {
-    class ObjectCollection
+   sealed class ObjectCollection
     {
       static private List<IGameObject> list;
 
