@@ -30,6 +30,9 @@ namespace HTP_Project.GameObjects.Classes
                     obj.IsEnabled = false;
 
                 }
+               
+                   
+                
             }
         }
 

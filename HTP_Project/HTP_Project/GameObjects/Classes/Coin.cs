@@ -6,10 +6,13 @@ namespace HTP_Project.GameObjects.Classes
 {
     class Coin : BaseGameObject
     {
+        private readonly string name = "Coin";
 
         public Coin()
         {
-          
+
+            Name = name;
+
             Animation = AnimationFactory.CreateAnimation(AnimationType.SmallCoin);
 
             Animation.Location = new Coordinate(1, 1);
