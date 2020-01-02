@@ -1,4 +1,4 @@
-﻿using HTP_Project.GameObjects.Classes;
+﻿using HTP_Project.GameObjects.Objects;
 using HTP_Project.GameObjects.CollectionOfObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
