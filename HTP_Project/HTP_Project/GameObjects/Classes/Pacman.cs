@@ -8,14 +8,14 @@ namespace HTP_Project.GameObjects.Classes
 {
     class Pacman : BaseGameObject, IProtagonist
     {
-        
+
 
         public Pacman()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
             Animation.Location = new Coordinate(0.5f, 13f);
-           
+
 
         }
 
@@ -30,17 +30,26 @@ namespace HTP_Project.GameObjects.Classes
                     case "BigCoin":
                         obj.IsEnabled = false;
                         break;
-                    
+                    case "Blinky":
+
+                        Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
+                        
+                        Animation.Location = new Coordinate(obj.Animation.Location.X, obj.Animation.Location.Y);
+                        
+
+                        break;
+
+
                 }
-               
-                   
-                
+
+
+
             }
         }
 
         public override void Update()
         {
-         
+
 
             var MoveRight = new Coordinate(0.1f, 0.0f);
             var MoveLeft = MoveRight;
@@ -68,19 +77,19 @@ namespace HTP_Project.GameObjects.Classes
 
             if (LeftKeyPressed)
             {
-
                 Animation.Location -= MoveLeft;
             }
 
-            if (UpKeyPressed)
-            {
-                Animation.Location -= MoveUp;
-            }
+                if (UpKeyPressed)
+                {
+                    Animation.Location -= MoveUp;
+                }
 
-            if (DownKeyPressed)
-            {
-                Animation.Location += MoveDown;
+                if (DownKeyPressed)
+                {
+                    Animation.Location += MoveDown;
+                }
             }
         }
     }
-}
+

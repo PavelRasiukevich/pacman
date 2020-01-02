@@ -21,6 +21,7 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
             list.Add(new Pacman());
             list.Add(new Coin());
             list.Add(new Background());
+            list.Add(new Blinky());
 
             return list;
         }
