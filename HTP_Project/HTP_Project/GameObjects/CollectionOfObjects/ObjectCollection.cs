@@ -1,15 +1,10 @@
-﻿using HTP_Project.GameObjects.Classes;
+﻿using HTP_Project.GameObjects.Objects;
 using PacmanEngine.Components.Actors;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HTP_Project.GameObjects.CollectionOfObjects
 {
-   sealed class ObjectCollection
+    sealed class ObjectCollection
     {
       static private List<IGameObject> list;
 

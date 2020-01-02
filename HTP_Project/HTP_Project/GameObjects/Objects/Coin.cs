@@ -2,7 +2,7 @@
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
 
-namespace HTP_Project.GameObjects.Classes
+namespace HTP_Project.GameObjects.Objects
 {
     class Coin : BaseGameObject
     {

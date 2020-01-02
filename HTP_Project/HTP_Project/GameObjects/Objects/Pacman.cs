@@ -4,7 +4,7 @@ using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
 using System.Collections.Generic;
 
-namespace HTP_Project.GameObjects.Classes
+namespace HTP_Project.GameObjects.Objects
 {
     class Pacman : BaseGameObject, IProtagonist
     {

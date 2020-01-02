@@ -1,7 +1,7 @@
 ﻿using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Graphics;
 
-namespace HTP_Project.GameObjects.Classes
+namespace HTP_Project.GameObjects.Objects
 {
     class Background : BaseGameObject
     {
