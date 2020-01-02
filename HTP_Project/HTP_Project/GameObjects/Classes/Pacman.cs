@@ -25,10 +25,12 @@ namespace HTP_Project.GameObjects.Classes
         {
             foreach (var obj in collisions)
             {
-                if (obj.Name.Equals("BigCoin"))
+                switch (obj.Name)
                 {
-                    obj.IsEnabled = false;
-
+                    case "BigCoin":
+                        obj.IsEnabled = false;
+                        break;
+                    
                 }
                
                    
