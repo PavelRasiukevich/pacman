@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="GameObjects\BaseObjects\BaseGameObject.cs" />
     <Compile Include="GameObjects\Classes\Background.cs" />
+    <Compile Include="GameObjects\Classes\BigCoin.cs" />
     <Compile Include="GameObjects\Classes\Coin.cs" />
     <Compile Include="GameObjects\Classes\Pacman.cs" />
     <Compile Include="Program.cs" />

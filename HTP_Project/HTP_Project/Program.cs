@@ -8,7 +8,7 @@ namespace HTP_Project
     {
         static void Main(string[] args)
         {
-            Engine.Run(new IGameObject[] { new Background(), new Coin(), new Pacman() });
+            Engine.Run(new IGameObject[] { new Background(), new Coin(), new Pacman(), new BigCoin()});
 
 
         }

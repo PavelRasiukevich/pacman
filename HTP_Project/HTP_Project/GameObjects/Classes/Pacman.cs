@@ -8,24 +8,39 @@ namespace HTP_Project.GameObjects.Classes
 {
     class Pacman : BaseGameObject, IProtagonist
     {
+        List<IGameObject> list;
+
+
 
         public Pacman()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
+
             Animation.Location = new Coordinate(0.5f, 13f);
+            list = new List<IGameObject>();
+            list.Add(new BigCoin());
+
         }
 
         public DirectionKeys PressedKeys { get; set; }
 
         public void Collide(IEnumerable<IGameObject> collisions)
         {
-           
+            foreach (var obj in collisions)
+            {
+                if (obj.Name.Equals("BigCoin"))
+                {
+                    obj.IsEnabled = false;
+
+                }
+            }
         }
 
         public override void Update()
         {
-            
-            var MoveRight = new Coordinate(0.1f, 0f);
+            Collide(list);
+
+            var MoveRight = new Coordinate(0.1f, 0.0f);
             var MoveLeft = MoveRight;
 
             var MoveUp = new Coordinate(0f, 0.1f);
@@ -53,7 +68,6 @@ namespace HTP_Project.GameObjects.Classes
             {
 
                 Animation.Location -= MoveLeft;
-
             }
 
             if (UpKeyPressed)
