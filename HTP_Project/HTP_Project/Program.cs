@@ -1,6 +1,4 @@
-﻿using HTP_Project.GameObjects.Objects;
-using HTP_Project.GameObjects.CollectionOfObjects;
-using PacmanEngine.Components.Actors;
+﻿using HTP_Project.GameObjects.CollectionOfObjects;
 using PacmanEngine.Components.Base;
 
 namespace HTP_Project
