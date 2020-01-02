@@ -10,13 +10,14 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
 
         public static IEnumerable<IGameObject> CreateObjects()
         {
-            list = new List<IGameObject>();
-
-            list.Add(new BigCoin());
-            list.Add(new Pacman());
-            list.Add(new Coin());
-            list.Add(new Background());
-            list.Add(new Blinky());
+            list = new List<IGameObject>
+            {
+                new BigCoin(),
+                new Pacman(),
+                new Coin(),
+                new Background(),
+                new Blinky()
+            };
 
             return list;
         }
