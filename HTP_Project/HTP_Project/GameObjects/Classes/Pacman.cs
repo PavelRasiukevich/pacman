@@ -1,5 +1,4 @@
 ﻿using HTP_Project.GameObjects.BaseObjects;
-using HTP_Project.GameObjects.CollectionOfObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;

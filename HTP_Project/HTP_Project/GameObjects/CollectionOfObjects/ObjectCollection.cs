@@ -13,11 +13,6 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
     {
       static private List<IGameObject> list;
 
-        public static IEnumerable<IGameObject> Get
-        {
-            get => list;
-        }
-
         public static IEnumerable<IGameObject> CreateObjects()
         {
             list = new List<IGameObject>();
