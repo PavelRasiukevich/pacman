@@ -15,6 +15,7 @@ namespace HTP_Project.GameObjects.Objects
         //constructor
         public Pacman()
         {
+            Name = "Pacman";
 
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
