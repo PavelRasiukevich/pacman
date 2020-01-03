@@ -12,6 +12,7 @@ namespace HTP_Project.GameObjects.Objects
 
         public Coordinate CurrentPlace { get; set; }
 
+        //constructor
         public Pacman()
         {
 
