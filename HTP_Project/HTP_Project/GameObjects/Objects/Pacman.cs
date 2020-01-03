@@ -2,6 +2,7 @@
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace HTP_Project.GameObjects.Objects
@@ -9,17 +10,54 @@ namespace HTP_Project.GameObjects.Objects
     class Pacman : BaseGameObject, IProtagonist
     {
 
+        private Animation animation;
+
+        private string name;
+
+
+        public DirectionKeys PressedKeys { get; set; }
+
+        public new Animation Animation
+        {
+            get
+            {
+                return animation;
+            }
+
+            set
+            {
+                animation = value;
+            }
+        }
+
+
+
+        public new string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+
+
 
         public Pacman()
         {
-            Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
-            Animation.Location = new Coordinate(0.5f, 13f);
+            animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
+            animation.Location = new Coordinate(0.5f, 13f);
 
         }
 
-        public DirectionKeys PressedKeys { get; set; }
+
 
         public void Collide(IEnumerable<IGameObject> collisions)
         {
@@ -33,9 +71,9 @@ namespace HTP_Project.GameObjects.Objects
                     case "Blinky":
 
                         Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
-                        
+
                         Animation.Location = new Coordinate(obj.Animation.Location.X, obj.Animation.Location.Y);
-                        
+
 
                         break;
 
@@ -51,7 +89,7 @@ namespace HTP_Project.GameObjects.Objects
         {
 
 
-            var MoveRight = new Coordinate(0.1f, 0.0f);
+            var MoveRight = new Coordinate(0.1f, 0f);
             var MoveLeft = MoveRight;
 
             var MoveUp = new Coordinate(0f, 0.1f);
@@ -59,37 +97,67 @@ namespace HTP_Project.GameObjects.Objects
 
             Move(MoveRight, MoveLeft, MoveUp, MoveDown);
 
+
         }
 
 
         private void Move(Coordinate MoveRight, Coordinate MoveLeft, Coordinate MoveUp, Coordinate MoveDown)
         {
 
+
             bool RightKeyPressed = (PressedKeys & DirectionKeys.Right) == DirectionKeys.Right;
             bool LeftKeyPressed = (PressedKeys & DirectionKeys.Left) == DirectionKeys.Left;
             bool UpKeyPressed = (PressedKeys & DirectionKeys.Up) == DirectionKeys.Up;
             bool DownKeyPressed = (PressedKeys & DirectionKeys.Down) == DirectionKeys.Down;
 
-            if (RightKeyPressed)
+
+            //move right
+            if (RightKeyPressed & (animation.AnimationType != AnimationType.PacmanRight))
             {
-                Animation.Location += MoveRight;
+                animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
+
+            }
+            else if (RightKeyPressed)
+            {
+                animation.Location += MoveRight;
             }
 
-            if (LeftKeyPressed)
+            //move left
+            if (LeftKeyPressed & (animation.AnimationType != AnimationType.PacmanLeft))
             {
-                Animation.Location -= MoveLeft;
+                animation = AnimationFactory.CreateAnimation(AnimationType.PacmanLeft);
+
+                
+            }
+            else if (LeftKeyPressed)
+            {
+                animation.Location -= MoveLeft;
             }
 
-                if (UpKeyPressed)
-                {
-                    Animation.Location -= MoveUp;
-                }
+            //move up
+            if (UpKeyPressed & (animation.AnimationType != AnimationType.PacmanUp))
+            {
+                animation = AnimationFactory.CreateAnimation(AnimationType.PacmanUp);
 
-                if (DownKeyPressed)
-                {
-                    Animation.Location += MoveDown;
-                }
+
+            }
+            else if (UpKeyPressed)
+            {
+                animation.Location -= MoveUp;
+            }
+
+            //move down
+            if (DownKeyPressed & (animation.AnimationType != AnimationType.PacmanDown))
+            {
+                animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDown);
+
+
+            }
+            else if (DownKeyPressed)
+            {
+                animation.Location += MoveDown;
             }
         }
     }
+}
 
