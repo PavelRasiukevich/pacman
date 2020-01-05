@@ -70,7 +70,7 @@ namespace HTP_Project.GameObjects.Objects
 
         private void Move(Coordinate MoveRight, Coordinate MoveLeft, Coordinate MoveUp, Coordinate MoveDown)
         {
-            //current coordinate of object
+            //represents current location
             CurrentCoordinate = Animation.Location;
 
             bool RightKeyPressed = (PressedKeys & DirectionKeys.Right) == DirectionKeys.Right;
@@ -78,8 +78,14 @@ namespace HTP_Project.GameObjects.Objects
             bool UpKeyPressed = (PressedKeys & DirectionKeys.Up) == DirectionKeys.Up;
             bool DownKeyPressed = (PressedKeys & DirectionKeys.Down) == DirectionKeys.Down;
 
+            MoveAlongAxis_X(MoveRight, RightKeyPressed, LeftKeyPressed);
 
+            MoveAlongAxis_Y(MoveUp, UpKeyPressed, DownKeyPressed);
+        }
 
+        private void MoveAlongAxis_X(Coordinate MoveRight, bool RightKeyPressed, bool LeftKeyPressed)
+        {
+            //if we are not out of bounds of background
             if (CurrentCoordinate.X < 19.7f)
             {
                 //change animation to demanded
@@ -106,11 +112,7 @@ namespace HTP_Project.GameObjects.Objects
                 }
 
             }
-
-
-
-
-
+            //if we are not out of bounds of background
             if (CurrentCoordinate.X > 0.2f)
             {
                 //change animation to demanded
@@ -130,41 +132,52 @@ namespace HTP_Project.GameObjects.Objects
                     Animation.Location = new Coordinate(rightPassage.X, rightPassage.Y);
 
                 }
-                //move right
+                //move left
                 if (LeftKeyPressed)
                 {
                     Animation.Location -= MoveRight;
                 }
             }
+        }
 
-
-
-            //move up
-            if (UpKeyPressed & (Animation.AnimationType != AnimationType.PacmanUp))
+        private void MoveAlongAxis_Y(Coordinate MoveUp, bool UpKeyPressed, bool DownKeyPressed)
+        {
+            //if we are not out of bounds of background
+            if (CurrentCoordinate.Y > 0.35f)
             {
+                //change animation to demanded
+                if (UpKeyPressed & (Animation.AnimationType != AnimationType.PacmanUp))
+                {
+                    Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanUp);
 
-                Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanUp);
+                    Animation.Location = CurrentCoordinate;
+                }
 
-                Animation.Location = CurrentCoordinate;
+                //move up
+                if (UpKeyPressed)
+                {
+                    Animation.Location -= MoveUp;
+                }
 
             }
-            else if (UpKeyPressed)
+
+            //if we are not out of bounds of background
+            if (CurrentCoordinate.Y < 25.5f)
             {
-                Animation.Location -= MoveUp;
-            }
+                //change animation to demanded
+                if (DownKeyPressed & (Animation.AnimationType != AnimationType.PacmanDown))
+                {
+                    Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDown);
 
-            //move down
-            if (DownKeyPressed & (Animation.AnimationType != AnimationType.PacmanDown))
-            {
+                    Animation.Location = CurrentCoordinate;
+                }
 
-                Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDown);
+                //move up
+                if (DownKeyPressed)
+                {
+                    Animation.Location += MoveUp;
+                }
 
-                Animation.Location = CurrentCoordinate;
-
-            }
-            else if (DownKeyPressed)
-            {
-                Animation.Location += MoveDown;
             }
         }
 
