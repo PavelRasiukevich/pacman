@@ -6,11 +6,13 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
 {
     sealed class ObjectCollection
     {
+
       static private List<IGameObject> list;
 
         public static IEnumerable<IGameObject> CreateObjects()
         {
             list = new List<IGameObject>
+
             {
                 new BigCoin(),
                 new Pacman(),

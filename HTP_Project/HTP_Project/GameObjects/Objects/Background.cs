@@ -1,4 +1,5 @@
 ﻿using HTP_Project.GameObjects.BaseObjects;
+using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Graphics;
 
 namespace HTP_Project.GameObjects.Objects
@@ -13,7 +14,7 @@ namespace HTP_Project.GameObjects.Objects
 
         public override void Update()
         {
-
+          
         }
     }
 }

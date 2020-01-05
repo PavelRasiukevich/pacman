@@ -8,8 +8,6 @@ namespace HTP_Project
         static void Main(string[] args)
         {
             Engine.Run(ObjectCollection.CreateObjects());
-
-
         }
     }
 }
