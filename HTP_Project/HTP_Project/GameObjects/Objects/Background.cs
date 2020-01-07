@@ -29,7 +29,7 @@ namespace HTP_Project.GameObjects.Objects
         public void ChangeFromBlueToWhite()
         {
 
-            threeSecondsLater = DateTime.Now.AddSeconds(3);
+            threeSecondsLater = DateTime.Now.AddSeconds(3d);
 
             Animation = whiteMaze;
 

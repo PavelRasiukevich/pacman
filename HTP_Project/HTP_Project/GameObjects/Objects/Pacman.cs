@@ -45,8 +45,6 @@ namespace HTP_Project.GameObjects.Objects
                 {
                     case "BigCoin":
 
-                        obj.IsEnabled = false;
-
                         //event invokation
                         bigCoinEaten();
 

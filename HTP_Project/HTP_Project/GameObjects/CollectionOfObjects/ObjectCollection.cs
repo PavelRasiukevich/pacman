@@ -16,15 +16,17 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
             Pacman pacman = new Pacman();
             Background background = new Background();
             Blinky blinky = new Blinky();
+            BigCoin bigCoin = new BigCoin();
 
             pacman.bigCoinEaten += background.ChangeFromBlueToWhite;
             pacman.bigCoinEaten += blinky.MakeVulnerable;
+            pacman.bigCoinEaten += bigCoin.SpawnBigCoin;
 
 
             list.Add(pacman);
             list.Add(background);
             list.Add(blinky);
-            list.Add(new BigCoin());
+            list.Add(bigCoin);
             list.Add(blinky);
             list.Add(new Coin());
 
