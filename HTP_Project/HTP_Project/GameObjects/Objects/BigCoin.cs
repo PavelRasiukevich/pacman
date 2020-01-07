@@ -7,7 +7,7 @@ namespace HTP_Project.GameObjects.Objects
 {
     class BigCoin : BaseGameObject
     {
-        private DateTime threeSecondsLater;
+        DateTime threeSecondsLater;
 
         public Coordinate CurrentCoordinate { get; set; }
 
@@ -25,20 +25,22 @@ namespace HTP_Project.GameObjects.Objects
         public override void Update()
         {
 
-            if (DateTime.Now > threeSecondsLater)
+            if (DateTime.Now.CompareTo(threeSecondsLater) == 0)
             {
-                //doesen't work
-                //doesen't appear after 5 seconds
-                IsEnabled = true;
-                
+                SpawnBigCoin();
             }
         }
 
-        public void SpawnBigCoin()
+        private void SpawnBigCoin()
         {
-            threeSecondsLater = DateTime.Now.AddSeconds(5d);
-
             //works
+            IsEnabled = true;
+        }
+
+        public void GetTime()
+        {
+            threeSecondsLater = DateTime.Now.AddSeconds(3d);
+
             IsEnabled = false;
         }
     }

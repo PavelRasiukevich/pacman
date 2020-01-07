@@ -20,7 +20,7 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
 
             pacman.bigCoinEaten += background.ChangeFromBlueToWhite;
             pacman.bigCoinEaten += blinky.MakeVulnerable;
-            pacman.bigCoinEaten += bigCoin.SpawnBigCoin;
+            pacman.bigCoinEaten += bigCoin.GetTime;
 
 
             list.Add(pacman);
