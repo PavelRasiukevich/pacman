@@ -2,19 +2,25 @@
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace HTP_Project.GameObjects.Objects
 {
     class Pacman : BaseGameObject, IProtagonist
     {
+        internal delegate void BigCoinEaten();
+        internal event BigCoinEaten bigCoinEaten;
+
+
+
         const float XRight = 19.58f;
         const float Y = 13f;
         const float XLeft = 0.35f;
 
-        public Coordinate rightPassage = new Coordinate(XRight, Y);
-        public Coordinate leftPassage = new Coordinate(XLeft, Y);
+        
+
+        public Coordinate rightSpot = new Coordinate(XRight, Y);
+        public Coordinate leftSpot = new Coordinate(XLeft, Y);
 
         public DirectionKeys PressedKeys { get; set; }
 
@@ -38,18 +44,24 @@ namespace HTP_Project.GameObjects.Objects
                 switch (obj.Name)
                 {
                     case "BigCoin":
+
                         obj.IsEnabled = false;
 
-                        break;
-                    case "Blinky":
-
-                        if (Animation.AnimationType == AnimationType.PacmanRight)
-                        {
-                            Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
-                        }
-                        Animation.Location = CurrentCoordinate;
+                        //event invokation
+                        bigCoinEaten();
 
                         break;
+
+                        //test
+                        /*case "Blinky":
+
+                            if (Animation.AnimationType == AnimationType.PacmanRight)
+                            {
+                                Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
+                            }
+                            Animation.Location = CurrentCoordinate;
+
+                            break;*/
                 }
 
             }
@@ -97,12 +109,12 @@ namespace HTP_Project.GameObjects.Objects
 
                 }
                 //change location if condition is true
-                if ((CurrentCoordinate.X > rightPassage.X) & (CurrentCoordinate.Y == rightPassage.Y))
+                if ((CurrentCoordinate.X > rightSpot.X) & (CurrentCoordinate.Y == rightSpot.Y))
                 {
 
                     Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
 
-                    Animation.Location = new Coordinate(leftPassage.X, leftPassage.Y);
+                    Animation.Location = new Coordinate(leftSpot.X, leftSpot.Y);
 
                 }
                 //move right
@@ -124,12 +136,12 @@ namespace HTP_Project.GameObjects.Objects
 
                 }
                 //change location if condition is true
-                if ((CurrentCoordinate.X < leftPassage.X) & (CurrentCoordinate.Y == leftPassage.Y))
+                if ((CurrentCoordinate.X < leftSpot.X) & (CurrentCoordinate.Y == leftSpot.Y))
                 {
 
                     Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanLeft);
 
-                    Animation.Location = new Coordinate(rightPassage.X, rightPassage.Y);
+                    Animation.Location = new Coordinate(rightSpot.X, rightSpot.Y);
 
                 }
                 //move left

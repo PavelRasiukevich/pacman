@@ -7,19 +7,26 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
     sealed class ObjectCollection
     {
 
-      static private List<IGameObject> list;
+        static private List<IGameObject> list;
 
         public static IEnumerable<IGameObject> CreateObjects()
         {
-            list = new List<IGameObject>
+            list = new List<IGameObject>();
 
-            {
-                new BigCoin(),
-                new Pacman(),
-                new Coin(),
-                new Background(),
-                new Blinky()
-            };
+            Pacman pacman = new Pacman();
+            Background background = new Background();
+            Blinky blinky = new Blinky();
+
+            pacman.bigCoinEaten += background.ChangeFromBlueToWhite;
+            pacman.bigCoinEaten += blinky.MakeVulnerable;
+
+
+            list.Add(pacman);
+            list.Add(background);
+            list.Add(blinky);
+            list.Add(new BigCoin());
+            list.Add(blinky);
+            list.Add(new Coin());
 
             return list;
         }
