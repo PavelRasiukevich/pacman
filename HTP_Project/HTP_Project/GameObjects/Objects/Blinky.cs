@@ -11,7 +11,7 @@ namespace HTP_Project.GameObjects.Objects
 
         public Coordinate CurrentCoordinate { get; set; }
 
-        public Blinky()
+        public Blinky() 
         {
 
             Animation = AnimationFactory.CreateAnimation(AnimationType.BlinkyLeft);
