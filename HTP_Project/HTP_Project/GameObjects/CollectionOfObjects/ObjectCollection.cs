@@ -22,7 +22,7 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
 
             list.Add(BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0));
 
-            list.AddRange(PointCreator.CreatPoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null));
+            list.AddRange(PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null));
 
             //Pacman pacman = new Pacman();
             //Background background = new Background();
