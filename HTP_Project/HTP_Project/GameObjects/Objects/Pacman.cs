@@ -10,17 +10,13 @@ namespace HTP_Project.GameObjects.Objects
     {
         internal delegate void BigCoinEaten();
         internal event BigCoinEaten bigCoinEaten;
-
-
-
-        const float XRight = 19.58f;
-        const float Y = 13f;
-        const float XLeft = 0.35f;
+        
+        //...
+        private DirectionKeys CurrentDirection = DirectionKeys.None;
 
         
 
-        public Coordinate rightSpot = new Coordinate(XRight, Y);
-        public Coordinate leftSpot = new Coordinate(XLeft, Y);
+        public  float Speed { get; set; } = 0.1f;
 
         public DirectionKeys PressedKeys { get; set; }
 
@@ -29,56 +25,96 @@ namespace HTP_Project.GameObjects.Objects
         //constructor
         public Pacman()
         {
-            Name = "Pacman";
-
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
-
-            Animation.Location = new Coordinate(0.5f, 13f);
-
+            
         }
 
         public void Collide(IEnumerable<IGameObject> collisions)
         {
             foreach (var obj in collisions)
             {
-                switch (obj.Name)
-                {
-                    case "BigCoin":
-
-                        //event invokation
-                        bigCoinEaten();
-
-                        break;
-
-                        //test
-                        /*case "Blinky":
-
-                            if (Animation.AnimationType == AnimationType.PacmanRight)
-                            {
-                                Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
-                            }
-                            Animation.Location = CurrentCoordinate;
-
-                            break;*/
-                }
-
+                if (obj.Name == AnimationType.SmallCoin.ToString())
+                    obj.IsEnabled = false;
             }
         }
 
         public override void Update()
         {
 
-            var MoveRight = new Coordinate(0.1f, 0f);
-            var MoveLeft = MoveRight;
+            DirectionKeys newDirection = DirectionKeys.None;
 
-            var MoveUp = new Coordinate(0f, 0.1f);
-            var MoveDown = MoveUp;
+            if((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right)
+            {
+                newDirection = DirectionKeys.Right;
+            }
+            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left)
+            {
+                newDirection = DirectionKeys.Left;
+            }
+            else if((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up)
+            {
+                newDirection = DirectionKeys.Up;
+            }
+           else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down)
+            {
+                newDirection = DirectionKeys.Down;
+            }
 
-            Move(MoveRight, MoveLeft, MoveUp, MoveDown);
+            if (CurrentDirection != newDirection && newDirection != DirectionKeys.None)
+            {
+                Animation newAnimation = null;
+
+                switch (newDirection)
+                {
+                    case DirectionKeys.Right:
+                        newAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
+                        break;
+                    case DirectionKeys.Left:
+                        newAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanLeft);
+                        break;
+                    case DirectionKeys.Up:
+                        newAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanUp);
+                        break;
+                    case DirectionKeys.Down:
+                        newAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanDown);
+                        break;
+
+                }
+
+                newAnimation.Location = Animation.Location;
+                Animation = newAnimation;
+                CurrentDirection = newDirection;
+            }
+                switch (CurrentDirection)
+                {
+
+                    case DirectionKeys.Right:
+                        Animation.Location += new Coordinate(Speed, 0.0f);
+                        break;
+                    case DirectionKeys.Left:
+                        Animation.Location -= new Coordinate(Speed, 0.0f);
+                        break;
+                    case DirectionKeys.Up:
+                        Animation.Location -= new Coordinate(0.0f, Speed);
+                        break;
+                    case DirectionKeys.Down:
+                        Animation.Location += new Coordinate(0.0f, Speed);
+                        break;
+                }
+            
+
+
+           // var MoveRight = new Coordinate(0.1f, 0f);
+            //var MoveLeft = MoveRight;
+
+            //var MoveUp = new Coordinate(0f, 0.1f);
+            //var MoveDown = MoveUp;
+
+           // Move(MoveRight, MoveLeft, MoveUp, MoveDown);
 
         }
 
-        private void Move(Coordinate MoveRight, Coordinate MoveLeft, Coordinate MoveUp, Coordinate MoveDown)
+       /* private void Move(Coordinate MoveRight, Coordinate MoveLeft, Coordinate MoveUp, Coordinate MoveDown)
         {
             //represents current location
             CurrentCoordinate = Animation.Location;
@@ -88,12 +124,12 @@ namespace HTP_Project.GameObjects.Objects
             bool UpKeyPressed = (PressedKeys & DirectionKeys.Up) == DirectionKeys.Up;
             bool DownKeyPressed = (PressedKeys & DirectionKeys.Down) == DirectionKeys.Down;
 
-            MoveAlongAxis_X(MoveRight, RightKeyPressed, LeftKeyPressed);
+            //MoveAlongAxis_X(MoveRight, RightKeyPressed, LeftKeyPressed);
 
-            MoveAlongAxis_Y(MoveUp, UpKeyPressed, DownKeyPressed);
-        }
+            //MoveAlongAxis_Y(MoveUp, UpKeyPressed, DownKeyPressed);
+        }*/
 
-        private void MoveAlongAxis_X(Coordinate MoveRight, bool RightKeyPressed, bool LeftKeyPressed)
+        /*private void MoveAlongAxis_X(Coordinate MoveRight, bool RightKeyPressed, bool LeftKeyPressed)
         {
             //if we are not out of bounds of background
             if (CurrentCoordinate.X < 19.7f)
@@ -189,7 +225,7 @@ namespace HTP_Project.GameObjects.Objects
                 }
 
             }
-        }
+        }*/
 
 
     }

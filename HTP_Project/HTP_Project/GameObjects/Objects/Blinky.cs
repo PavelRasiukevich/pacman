@@ -9,18 +9,13 @@ namespace HTP_Project.GameObjects.Objects
     {
         private DateTime threeSecondsLater;
 
-        private readonly string name = "Blinky";
-
         public Coordinate CurrentCoordinate { get; set; }
 
         public Blinky()
         {
 
-            Name = name;
-
             Animation = AnimationFactory.CreateAnimation(AnimationType.BlinkyLeft);
-
-            Animation.Location = new Coordinate(7f, 8f);
+            
         }
 
         public override void Update()

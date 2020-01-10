@@ -4,22 +4,16 @@ using PacmanEngine.Components.Graphics;
 
 namespace HTP_Project.GameObjects.Objects
 {
-    class Coin : BaseGameObject
+    class SmallCoin : BaseGameObject
     {
-        private readonly string name = "Coin";
+        public SmallCoin()
 
-        public Coin()
         {
-
-            Name = name;
-
             Animation = AnimationFactory.CreateAnimation(AnimationType.SmallCoin);
-
-            Animation.Location = new Coordinate(1, 1);
-          
         }
 
         public override void Update()
+
         {
             
         }

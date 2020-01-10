@@ -15,7 +15,7 @@ namespace HTP_Project.GameObjects.Objects
         public Background()
         {
 
-            Animation = AnimationFactory.CreateAnimation(AnimationType.MazeBlue);
+            
         }
 
         public override void Update()
