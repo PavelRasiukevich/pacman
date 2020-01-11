@@ -17,11 +17,6 @@ namespace HTP_Project.CollectionInitializer
             //???
             GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
 
-            if(GridCreator.Grid[0, 0] == false)
-            {
-                Console.WriteLine("Wall!");
-            }
-
             list = new List<IGameObject>();
 
             list.Add(BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0));

@@ -5,7 +5,7 @@ namespace HTP_Project.Data.Creators
 {
     class GridCreator
     {
-
+       
         public static bool[,] Grid { get; set; }
 
         public static bool[,] CreateGrid(PointData[] data)

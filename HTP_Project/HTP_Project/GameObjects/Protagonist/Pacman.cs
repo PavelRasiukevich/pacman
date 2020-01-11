@@ -1,4 +1,5 @@
 ﻿using HTP_Project.Data.Creators;
+using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
@@ -44,19 +45,19 @@ namespace HTP_Project.GameObjects.Protagonist
 
             DirectionKeys newDirection = DirectionKeys.None;
 
-            if ((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right)
+            if ((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right & GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
             {
                 newDirection = DirectionKeys.Right;
             }
-            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left)
+            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left & GridCreator.Grid[(int)Animation.Location.X - 1, (int)Animation.Location.Y])
             {
                 newDirection = DirectionKeys.Left;
             }
-            else if ((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up)
+            else if ((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up & GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y - 1])
             {
                 newDirection = DirectionKeys.Up;
             }
-            else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down)
+            else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down & GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y + 1])
             {
                 newDirection = DirectionKeys.Down;
             }
@@ -85,29 +86,30 @@ namespace HTP_Project.GameObjects.Protagonist
                 newAnimation.Location = Animation.Location;
                 Animation = newAnimation;
                 CurrentDirection = newDirection;
-                CurrentCoordinate = Animation.Location;
+                
             }
+           
             switch (CurrentDirection)
             {
-
+                
 
                 case DirectionKeys.Right:
-                    
+                    if(GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
                         Animation.Location += new Coordinate(Speed, 0.0f);
                     break;
 
                 case DirectionKeys.Left:
-                    
+                    if (GridCreator.Grid[(int)Animation.Location.X - 1, (int)Animation.Location.Y])
                         Animation.Location -= new Coordinate(Speed, 0.0f);
                     break;
 
                 case DirectionKeys.Up:
-                    
+                    if (GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y - 1])
                         Animation.Location -= new Coordinate(0.0f, Speed);
                     break;
 
                 case DirectionKeys.Down:
-                    
+                    if (GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y + 1])
                         Animation.Location += new Coordinate(0.0f, Speed);
                     break;
             }
