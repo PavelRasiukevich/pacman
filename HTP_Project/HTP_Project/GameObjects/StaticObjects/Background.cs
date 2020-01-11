@@ -2,7 +2,7 @@
 using PacmanEngine.Components.Graphics;
 using System;
 
-namespace HTP_Project.GameObjects.Objects
+namespace HTP_Project.GameObjects.StaticObjects
 {
     class Background : BaseGameObject
     {

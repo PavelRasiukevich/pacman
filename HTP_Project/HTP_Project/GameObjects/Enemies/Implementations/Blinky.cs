@@ -3,7 +3,7 @@ using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
 using System;
 
-namespace HTP_Project.GameObjects.Objects
+namespace HTP_Project.GameObjects.Enemies.Implementations
 {
     class Blinky : BaseGameObject
     {

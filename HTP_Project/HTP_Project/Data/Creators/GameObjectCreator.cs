@@ -1,12 +1,9 @@
 ﻿using HTP_Project.Data.PointDataClass;
 using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
-using HTP_Project.GameObjects.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HTP_Project.GameObjects.Enemies.Implementations;
+using HTP_Project.GameObjects.Protagonist;
+using HTP_Project.GameObjects.StaticObjects;
 
 namespace HTP_Project.Data.Creators
 {

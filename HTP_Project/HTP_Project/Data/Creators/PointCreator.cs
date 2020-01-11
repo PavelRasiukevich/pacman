@@ -21,7 +21,7 @@ namespace HTP_Project.Data.Creators
             var rows = str.Split(' ');
 
             PointData[] pointDataArray =
-                //GRID was parsed to ints from string
+                //str was parsed to ints from string
                 rows.Select(x => x.Select(element => int.Parse(element.ToString())).ToArray()).
                 //arr - array of arrays of ints; Coordinate_Y - index of each array 
                 Select((arr, Coordinate_Y) =>

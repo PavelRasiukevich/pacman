@@ -1,4 +1,4 @@
-﻿using HTP_Project.GameObjects.CollectionOfObjects;
+﻿using HTP_Project.CollectionInitializator;
 using PacmanEngine.Components.Base;
 
 namespace HTP_Project

@@ -1,15 +1,11 @@
 ﻿using HTP_Project.Data.Creators;
-using HTP_Project.Data.PointDataClass;
-using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
-using HTP_Project.GameObjects.Objects;
 using PacmanEngine.Components.Actors;
-using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HTP_Project.GameObjects.CollectionOfObjects
+namespace HTP_Project.CollectionInitializator
 {
     sealed class ObjectCollection
     {
@@ -17,7 +13,9 @@ namespace HTP_Project.GameObjects.CollectionOfObjects
 
         public static IEnumerable<IGameObject> InitCollection()
         {
-            
+            //???
+            //GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
+          
             list = new List<IGameObject>();
 
             list.Add(BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0));

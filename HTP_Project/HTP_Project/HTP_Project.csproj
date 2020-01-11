@@ -55,13 +55,14 @@
     <Compile Include="Data\PointDataClass\PointData.cs" />
     <Compile Include="Data\Creators\PointCreator.cs" />
     <Compile Include="GameObjects\BaseObjects\BaseGameObject.cs" />
-    <Compile Include="GameObjects\Objects\Background.cs" />
-    <Compile Include="GameObjects\Objects\BigCoin.cs" />
-    <Compile Include="GameObjects\Objects\Blinky.cs" />
-    <Compile Include="GameObjects\Objects\SmallCoin.cs" />
-    <Compile Include="GameObjects\Objects\Pacman.cs" />
-    <Compile Include="GameObjects\CollectionOfObjects\ObjectCollection.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GameObjects\Enemies\Interfaces\Antagonist.cs" />
+    <Compile Include="GameObjects\StaticObjects\Background.cs" />
+    <Compile Include="GameObjects\StaticObjects\BigCoin.cs" />
+    <Compile Include="GameObjects\Enemies\Implementations\Blinky.cs" />
+    <Compile Include="GameObjects\StaticObjects\SmallCoin.cs" />
+    <Compile Include="GameObjects\Protagonist\Pacman.cs" />
+    <Compile Include="CollectionInitializator\ObjectCollection.cs" />
+    <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
