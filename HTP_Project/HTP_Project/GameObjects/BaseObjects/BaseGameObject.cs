@@ -1,4 +1,6 @@
-﻿using HTP_Project.Enums;
+﻿using System;
+using HTP_Project.Enums;
+using HTP_Project.GameObjects.StaticObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
@@ -41,6 +43,6 @@ namespace HTP_Project.GameObjects.BaseObjects
 
             return result;
         }
-
+        
     }
 }

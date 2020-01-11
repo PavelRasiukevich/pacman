@@ -1,4 +1,4 @@
-﻿using HTP_Project.CollectionInitializator;
+﻿using HTP_Project.CollectionInitializer;
 using PacmanEngine.Components.Base;
 
 namespace HTP_Project

@@ -1,4 +1,5 @@
-﻿using HTP_Project.GameObjects.BaseObjects;
+﻿using HTP_Project.Data.Creators;
+using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
@@ -10,13 +11,13 @@ namespace HTP_Project.GameObjects.Protagonist
     {
         internal delegate void BigCoinEaten();
         internal event BigCoinEaten bigCoinEaten;
-        
+
         //...
         private DirectionKeys CurrentDirection = DirectionKeys.None;
 
-        
 
-        public  float Speed { get; set; } = 0.1f;
+
+        public float Speed { get; set; } = 0.1f;
 
         public DirectionKeys PressedKeys { get; set; }
 
@@ -26,7 +27,7 @@ namespace HTP_Project.GameObjects.Protagonist
         public Pacman()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
-            
+
         }
 
         public void Collide(IEnumerable<IGameObject> collisions)
@@ -43,7 +44,7 @@ namespace HTP_Project.GameObjects.Protagonist
 
             DirectionKeys newDirection = DirectionKeys.None;
 
-            if((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right)
+            if ((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right)
             {
                 newDirection = DirectionKeys.Right;
             }
@@ -51,11 +52,11 @@ namespace HTP_Project.GameObjects.Protagonist
             {
                 newDirection = DirectionKeys.Left;
             }
-            else if((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up)
+            else if ((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up)
             {
                 newDirection = DirectionKeys.Up;
             }
-           else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down)
+            else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down)
             {
                 newDirection = DirectionKeys.Down;
             }
@@ -84,26 +85,35 @@ namespace HTP_Project.GameObjects.Protagonist
                 newAnimation.Location = Animation.Location;
                 Animation = newAnimation;
                 CurrentDirection = newDirection;
+                CurrentCoordinate = Animation.Location;
             }
-                switch (CurrentDirection)
-                {
+            switch (CurrentDirection)
+            {
 
-                    case DirectionKeys.Right:
+
+                case DirectionKeys.Right:
+                    
                         Animation.Location += new Coordinate(Speed, 0.0f);
-                        break;
-                    case DirectionKeys.Left:
+                    break;
+
+                case DirectionKeys.Left:
+                    
                         Animation.Location -= new Coordinate(Speed, 0.0f);
-                        break;
-                    case DirectionKeys.Up:
+                    break;
+
+                case DirectionKeys.Up:
+                    
                         Animation.Location -= new Coordinate(0.0f, Speed);
-                        break;
-                    case DirectionKeys.Down:
+                    break;
+
+                case DirectionKeys.Down:
+                    
                         Animation.Location += new Coordinate(0.0f, Speed);
-                        break;
-                }
-            
+                    break;
+            }
+
         }
-        
+
     }
 }
 

@@ -2,10 +2,11 @@
 using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HTP_Project.CollectionInitializator
+namespace HTP_Project.CollectionInitializer
 {
     sealed class ObjectCollection
     {
@@ -14,8 +15,13 @@ namespace HTP_Project.CollectionInitializator
         public static IEnumerable<IGameObject> InitCollection()
         {
             //???
-            //GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
-          
+            GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
+
+            if(GridCreator.Grid[0, 0] == false)
+            {
+                Console.WriteLine("Wall!");
+            }
+
             list = new List<IGameObject>();
 
             list.Add(BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0));
