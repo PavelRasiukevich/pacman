@@ -58,7 +58,7 @@
     <Compile Include="GameObjects\Enemies\Implementations\Clyde.cs" />
     <Compile Include="GameObjects\Enemies\Implementations\Inky.cs" />
     <Compile Include="GameObjects\Enemies\Implementations\Pinky.cs" />
-    <Compile Include="GameObjects\Enemies\Interfaces\Antagonist.cs" />
+    <Compile Include="GameObjects\Enemies\Interfaces\IAntagonist.cs" />
     <Compile Include="GameObjects\StaticObjects\Background.cs" />
     <Compile Include="GameObjects\StaticObjects\BigCoin.cs" />
     <Compile Include="GameObjects\Enemies\Implementations\Blinky.cs" />

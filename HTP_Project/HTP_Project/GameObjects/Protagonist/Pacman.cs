@@ -1,4 +1,5 @@
 ﻿using HTP_Project.Data.Creators;
+using HTP_Project.Data.PointDataClass;
 using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
