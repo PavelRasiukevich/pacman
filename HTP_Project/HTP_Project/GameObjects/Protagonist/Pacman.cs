@@ -1,6 +1,4 @@
 ﻿using HTP_Project.Data.Creators;
-using HTP_Project.Data.PointDataClass;
-using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
@@ -50,7 +48,7 @@ namespace HTP_Project.GameObjects.Protagonist
             {
                 newDirection = DirectionKeys.Right;
             }
-            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left & GridCreator.Grid[(int)Animation.Location.X - 1, (int)Animation.Location.Y])
+            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left & GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
             {
                 newDirection = DirectionKeys.Left;
             }
