@@ -36,7 +36,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PacmanEngine">
+    <Reference Include="PacmanEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\User\Downloads\Telegram Desktop\PacmanEngine\PacmanEngine\PacmanEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />

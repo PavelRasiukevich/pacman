@@ -17,7 +17,7 @@ namespace HTP_Project.GameObjects.Protagonist
 
 
 
-        public float Speed { get; set; } = 0.1f;
+        public int Speed { get; set; } = Coordinate.Multiplier;
 
         public DirectionKeys PressedKeys { get; set; }
 
@@ -44,19 +44,19 @@ namespace HTP_Project.GameObjects.Protagonist
 
             DirectionKeys newDirection = DirectionKeys.None;
 
-            if ((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right & GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
+            if ((PressedKeys & DirectionKeys.Right) == DirectionKeys.Right & GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier + 1, Animation.Location.Y / Coordinate.Multiplier])
             {
                 newDirection = DirectionKeys.Right;
             }
-            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left & GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
+            else if ((PressedKeys & DirectionKeys.Left) == DirectionKeys.Left & GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier - 1, Animation.Location.Y / Coordinate.Multiplier])
             {
                 newDirection = DirectionKeys.Left;
             }
-            else if ((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up & GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y - 1])
+            else if ((PressedKeys & DirectionKeys.Up) == DirectionKeys.Up & GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier, Animation.Location.Y / Coordinate.Multiplier - 1])
             {
                 newDirection = DirectionKeys.Up;
             }
-            else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down & GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y + 1])
+            else if ((PressedKeys & DirectionKeys.Down) == DirectionKeys.Down & GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier, Animation.Location.Y / Coordinate.Multiplier + 1])
             {
                 newDirection = DirectionKeys.Down;
             }
@@ -85,31 +85,31 @@ namespace HTP_Project.GameObjects.Protagonist
                 newAnimation.Location = Animation.Location;
                 Animation = newAnimation;
                 CurrentDirection = newDirection;
-                
+
             }
-           
+
             switch (CurrentDirection)
             {
-                
+
 
                 case DirectionKeys.Right:
-                    if(GridCreator.Grid[(int)Animation.Location.X + 1, (int)Animation.Location.Y])
-                        Animation.Location += new Coordinate(Speed, 0.0f);
+                    if (GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier + 1, Animation.Location.Y / Coordinate.Multiplier])
+                        Animation.Location += new Coordinate(Speed, 0);
                     break;
 
                 case DirectionKeys.Left:
-                    if (GridCreator.Grid[(int)Animation.Location.X - 1, (int)Animation.Location.Y])
-                        Animation.Location -= new Coordinate(Speed, 0.0f);
+                    if (GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier - 1, Animation.Location.Y / Coordinate.Multiplier])
+                        Animation.Location -= new Coordinate(Speed, 0);
                     break;
 
                 case DirectionKeys.Up:
-                    if (GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y - 1])
-                        Animation.Location -= new Coordinate(0.0f, Speed);
+                    if (GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier, Animation.Location.Y / Coordinate.Multiplier - 1])
+                        Animation.Location -= new Coordinate(0, Speed);
                     break;
 
                 case DirectionKeys.Down:
-                    if (GridCreator.Grid[(int)Animation.Location.X, (int)Animation.Location.Y + 1])
-                        Animation.Location += new Coordinate(0.0f, Speed);
+                    if (GridCreator.Grid[Animation.Location.X / Coordinate.Multiplier, Animation.Location.Y / Coordinate.Multiplier + 1])
+                        Animation.Location += new Coordinate(0, Speed);
                     break;
             }
 

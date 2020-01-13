@@ -2,7 +2,6 @@
 using HTP_Project.GameObjects.BaseObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,6 +22,9 @@ namespace HTP_Project.CollectionInitializer
 
             list.AddRange(PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null));
 
+            
+            
+            
             //Pacman pacman = new Pacman();
             //Background background = new Background();
             //Blinky blinky = new Blinky();

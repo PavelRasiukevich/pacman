@@ -1,5 +1,6 @@
 ﻿using HTP_Project.Data.PointDataClass;
 using HTP_Project.Enums;
+using PacmanEngine.Components.Base;
 
 namespace HTP_Project.Data.Creators
 {
@@ -14,7 +15,7 @@ namespace HTP_Project.Data.Creators
 
             foreach (var d in data)
             {
-                Grid[(int)d.Crdnt.X, (int)d.Crdnt.Y] = d.InitData != InitialData.Wall;
+                Grid[d.Crdnt.X / Coordinate.Multiplier, d.Crdnt.Y / Coordinate.Multiplier] = d.InitData != InitialData.Wall;
             }
             return Grid;
         }

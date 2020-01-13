@@ -28,7 +28,7 @@ namespace HTP_Project.Data.Creators
                 //NumberInEachArray - each element in array; Coordinate_X - index of each element in array
                 arr.Select((NumberInEachArray, Coordinate_X)
                 //
-                => new PointData() { Crdnt = new Coordinate(Coordinate_X, Coordinate_Y), InitData = (InitialData)NumberInEachArray }))
+                => new PointData() { Crdnt = new Coordinate(Coordinate_X * Coordinate.Multiplier, Coordinate_Y * Coordinate.Multiplier), InitData = (InitialData)NumberInEachArray }))
                 .SelectMany(e => e).ToArray();
 
             return pointDataArray;

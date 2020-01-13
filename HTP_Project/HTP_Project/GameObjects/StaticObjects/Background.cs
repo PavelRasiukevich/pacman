@@ -9,7 +9,6 @@ namespace HTP_Project.GameObjects.StaticObjects
       
         private DateTime threeSecondsLater;
 
-
         private Animation whiteMaze = AnimationFactory.CreateAnimation(AnimationType.MazeWhite);
 
         public Background()
