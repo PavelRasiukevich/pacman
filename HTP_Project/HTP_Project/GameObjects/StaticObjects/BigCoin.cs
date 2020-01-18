@@ -7,7 +7,6 @@ namespace HTP_Project.GameObjects.StaticObjects
 {
     class BigCoin : BaseGameObject
     {
-        DateTime threeSecondsLater;
 
         public Coordinate CurrentCoordinate { get; set; }
         
@@ -16,27 +15,6 @@ namespace HTP_Project.GameObjects.StaticObjects
             
             Animation = AnimationFactory.CreateAnimation(AnimationType.BigCoin);
         }
-
-        public override void Update()
-        {
-
-            if (DateTime.Now > threeSecondsLater)
-            {
-                SpawnBigCoin();
-            }
-        }
-
-        private void SpawnBigCoin()
-        {
-            //works
-            IsEnabled = true;
-        }
-
-        public void GetTime()
-        {
-            threeSecondsLater = DateTime.Now.AddSeconds(3d);
-
-            IsEnabled = false;
-        }
+       
     }
 }

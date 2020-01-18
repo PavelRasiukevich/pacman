@@ -1,5 +1,9 @@
 ﻿using HTP_Project.Data.Creators;
 using HTP_Project.GameObjects.BaseObjects;
+using HTP_Project.GameObjects.Enemies.Implementations;
+using HTP_Project.GameObjects.Global;
+using HTP_Project.GameObjects.Protagonist;
+using HTP_Project.GameObjects.StaticObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Graphics;
 using System.Collections.Generic;
@@ -13,33 +17,30 @@ namespace HTP_Project.CollectionInitializer
 
         public static IEnumerable<IGameObject> InitCollection()
         {
-            //???
-            GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
 
             list = new List<IGameObject>();
 
-            list.Add(BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0));
+            GrandArbiter grandArbiter = new GrandArbiter();
 
-            list.AddRange(PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null));
+            GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
 
+            var background = BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0);
+
+            var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null);
+
+            var pac = tempList.OfType<Pacman>().First();
             
-            
-            
-            //Pacman pacman = new Pacman();
-            //Background background = new Background();
-            //Blinky blinky = new Blinky();
-            //BigCoin bigCoin = new BigCoin();
+            grandArbiter.Maze = (Background)background;
+            grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
+            grandArbiter.Pinky = tempList.OfType<Pinky>().First();
+            grandArbiter.Inky = tempList.OfType<Inky>().First();
+            grandArbiter.Clyde = tempList.OfType<Clyde>().First();
 
-            //pacman.bigCoinEaten += background.ChangeFromBlueToWhite;
-            //pacman.bigCoinEaten += blinky.MakeVulnerable;
-            //pacman.bigCoinEaten += bigCoin.GetTime;
+            pac.Arbiter = grandArbiter;
 
+            list.Add(background);
 
-            //list.Add(pacman);
-            //list.Add(background);
-            //list.Add(blinky);
-            //list.Add(bigCoin);
-            //list.Add(blinky);
+            list.AddRange(tempList);
 
 
             return list;

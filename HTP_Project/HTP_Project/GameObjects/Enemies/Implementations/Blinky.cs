@@ -8,8 +8,7 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
 {
     class Blinky : BaseGameObject, IAntagonist
     {
-        private DateTime threeSecondsLater;
-
+       
         public Coordinate CurrentCoordinate { get; set; }
 
         public Blinky() 
@@ -19,23 +18,8 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
             
         }
 
-        public override void Update()
-        {
-
-            CurrentCoordinate = Animation.Location;
-
-            if (DateTime.Now > threeSecondsLater)
-            {
-                Animation = AnimationFactory.CreateAnimation(AnimationType.BlinkyLeft);
-
-                Animation.Location = CurrentCoordinate;
-            }
-
-        }
-        
         public void BecomeVulnerable()
         {
-            threeSecondsLater = DateTime.Now.AddSeconds(3d);
 
             Animation = AnimationFactory.CreateAnimation(AnimationType.BlueGhost);
 

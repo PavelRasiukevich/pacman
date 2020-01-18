@@ -1,6 +1,4 @@
-﻿using System;
-using HTP_Project.Enums;
-using HTP_Project.GameObjects.StaticObjects;
+﻿using HTP_Project.GameObjects.StaticObjects;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
@@ -21,13 +19,13 @@ namespace HTP_Project.GameObjects.BaseObjects
         public static BaseGameObject CreateStaticObject(AnimationType type, int X, int Y)
         {
 
-            BaseGameObject result = null; ;
+            Background result = null; ;
 
             switch (type)
             {
                 case AnimationType.MazeBlue:
 
-                    result = new BaseGameObject()
+                    result = new Background()
                     {
                         Animation = AnimationFactory.CreateAnimation(AnimationType.MazeBlue)
                     };

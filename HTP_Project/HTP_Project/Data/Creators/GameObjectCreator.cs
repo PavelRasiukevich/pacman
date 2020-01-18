@@ -19,6 +19,7 @@ namespace HTP_Project.Data.Creators
                     res = new Pacman();
                     res.Animation.Location = point.Crdnt;
                     res.Name = InitialData.SmallCoin.ToString();
+                    
                     break;
 
                 case InitialData.Blinky:
