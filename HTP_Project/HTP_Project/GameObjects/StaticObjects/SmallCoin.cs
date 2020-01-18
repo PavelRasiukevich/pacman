@@ -15,7 +15,7 @@ namespace HTP_Project.GameObjects.StaticObjects
         public override void Update()
 
         {
-            
+
         }
     }
 }

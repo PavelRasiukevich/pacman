@@ -4,15 +4,13 @@ using HTP_Project.GameObjects.Global;
 using PacmanEngine.Components.Actors;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace HTP_Project.GameObjects.Protagonist
 {
     class Pacman : BaseGameObject, IProtagonist
     {
-
-
-
         private DirectionKeys CurrentDirection = DirectionKeys.None;
 
         public int Speed { get; set; } = Coordinate.Multiplier / 10;
@@ -34,38 +32,15 @@ namespace HTP_Project.GameObjects.Protagonist
         {
             foreach (var obj in collisions)
             {
-                switch (obj.Name)
+
+                if (obj.Name == AnimationType.BigCoin.ToString())
                 {
-                    case "SmallCoin":
-
-                        obj.IsEnabled = false;
-
-                        break;
-
-                    case "BigCoin":
-
-                        Arbiter.Blinky.BecomeVulnerable();
-
-                        Arbiter.Maze.ChangeFromBlueToWhite();
-
-                        obj.IsEnabled = false;
-                        
-                        break;
-
-                    case "Blinky":
-                        
-                        break;
-
-                    case "Inly":
-                        break;
-
-                    case "Pinky":
-                        break;
-
-                    case "Clyde":
-                        break;
 
                 }
+
+               
+                    
+
 
             }
         }

@@ -5,9 +5,8 @@ using System;
 
 namespace HTP_Project.GameObjects.Global
 {
-    class GrandArbiter : BaseGameObject
+    class GrandArbiter
     {
-
         public Background Maze { get; set; }
 
         public Blinky Blinky { get; set; }
@@ -22,14 +21,10 @@ namespace HTP_Project.GameObjects.Global
 
         public DateTime CurrentTime { get; set; }
 
-        public GrandArbiter()
+        public GrandArbiter(Blinky blinky)
         {
-
+            Blinky = blinky;
         }
 
-        public override void Update()
-        {
-            
-        }
     }
 }

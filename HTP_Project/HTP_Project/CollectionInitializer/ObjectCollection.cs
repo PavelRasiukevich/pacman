@@ -19,21 +19,30 @@ namespace HTP_Project.CollectionInitializer
         {
 
             list = new List<IGameObject>();
-
-            GrandArbiter grandArbiter = new GrandArbiter();
-
+            
             GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
+
+            
 
             var background = BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0);
 
             var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null);
 
             var pac = tempList.OfType<Pacman>().First();
-            
+
+
+
+
+            GrandArbiter grandArbiter = new GrandArbiter(tempList.OfType<Blinky>().First());
+
             grandArbiter.Maze = (Background)background;
-            grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
+
+            //grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
+
             grandArbiter.Pinky = tempList.OfType<Pinky>().First();
+
             grandArbiter.Inky = tempList.OfType<Inky>().First();
+
             grandArbiter.Clyde = tempList.OfType<Clyde>().First();
 
             pac.Arbiter = grandArbiter;
