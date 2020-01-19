@@ -21,29 +21,25 @@ namespace HTP_Project.CollectionInitializer
             list = new List<IGameObject>();
             
             GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
-
             
-
             var background = BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0);
 
             var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null);
 
             var pac = tempList.OfType<Pacman>().First();
 
+            GrandArbiter grandArbiter = new GrandArbiter
+            {
+                Maze = (Background)background,
 
+                Blinky = tempList.OfType<Blinky>().First(),
 
+                Pinky = tempList.OfType<Pinky>().First(),
 
-            GrandArbiter grandArbiter = new GrandArbiter();
+                Inky = tempList.OfType<Inky>().First(),
 
-            grandArbiter.Maze = (Background)background;
-
-            grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
-
-            grandArbiter.Pinky = tempList.OfType<Pinky>().First();
-
-            grandArbiter.Inky = tempList.OfType<Inky>().First();
-
-            grandArbiter.Clyde = tempList.OfType<Clyde>().First();
+                Clyde = tempList.OfType<Clyde>().First()
+            };
 
             pac.Arbiter = grandArbiter;
 
@@ -52,7 +48,6 @@ namespace HTP_Project.CollectionInitializer
             list.Add(grandArbiter);
 
             list.AddRange(tempList);
-
 
             return list;
         }
