@@ -33,11 +33,11 @@ namespace HTP_Project.CollectionInitializer
 
 
 
-            GrandArbiter grandArbiter = new GrandArbiter(tempList.OfType<Blinky>().First());
+            GrandArbiter grandArbiter = new GrandArbiter();
 
             grandArbiter.Maze = (Background)background;
 
-            //grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
+            grandArbiter.Blinky = tempList.OfType<Blinky>().First(); 
 
             grandArbiter.Pinky = tempList.OfType<Pinky>().First();
 
@@ -48,6 +48,8 @@ namespace HTP_Project.CollectionInitializer
             pac.Arbiter = grandArbiter;
 
             list.Add(background);
+
+            list.Add(grandArbiter);
 
             list.AddRange(tempList);
 
