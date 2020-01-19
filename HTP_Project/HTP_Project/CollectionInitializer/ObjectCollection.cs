@@ -13,15 +13,16 @@ namespace HTP_Project.CollectionInitializer
 {
     sealed class ObjectCollection
     {
+
         static private List<IGameObject> list;
 
         public static IEnumerable<IGameObject> InitCollection()
         {
 
             list = new List<IGameObject>();
-            
+
             GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
-            
+
             var background = BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0);
 
             var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null);
@@ -29,6 +30,7 @@ namespace HTP_Project.CollectionInitializer
             var pac = tempList.OfType<Pacman>().First();
 
             GrandArbiter grandArbiter = new GrandArbiter
+
             {
                 Maze = (Background)background,
 
