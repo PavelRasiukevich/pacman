@@ -13,6 +13,8 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
 
         public Coordinate CurrentCoordinate { get; set; }
 
+        public bool IsVulnerable { get; set; }
+
         public Inky()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.InkyLeft);

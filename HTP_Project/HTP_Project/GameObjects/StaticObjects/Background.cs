@@ -7,7 +7,7 @@ namespace HTP_Project.GameObjects.StaticObjects
     class Background : BaseGameObject
     {
       
-        private DateTime threeSecondsLater;
+        private DateTime SecondsLater;
 
         private Animation whiteMaze = AnimationFactory.CreateAnimation(AnimationType.MazeWhite);
 
@@ -19,7 +19,7 @@ namespace HTP_Project.GameObjects.StaticObjects
 
         public override void Update()
         {
-            if(DateTime.Now > threeSecondsLater)
+            if(DateTime.Now > SecondsLater)
             {
                 Animation = AnimationFactory.CreateAnimation(AnimationType.MazeBlue);
             }
@@ -28,7 +28,7 @@ namespace HTP_Project.GameObjects.StaticObjects
         public void ChangeFromBlueToWhite()
         {
 
-            threeSecondsLater = DateTime.Now.AddSeconds(3d);
+            SecondsLater = DateTime.Now.AddSeconds(5d);
 
             Animation = whiteMaze;
 

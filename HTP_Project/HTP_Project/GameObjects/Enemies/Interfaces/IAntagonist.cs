@@ -2,6 +2,8 @@
 {
     interface IAntagonist
     {
-       void BecomeVulnerable();
+        void BecomeVulnerable();
+
+        bool IsVulnerable { get; set; } 
     }
 }

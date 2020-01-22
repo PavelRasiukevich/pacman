@@ -1,4 +1,5 @@
 ﻿using HTP_Project.Data.Creators;
+using HTP_Project.Enums;
 using HTP_Project.GameObjects.BaseObjects;
 using HTP_Project.GameObjects.Enemies.Implementations;
 using HTP_Project.GameObjects.Global;
@@ -20,12 +21,12 @@ namespace HTP_Project.CollectionInitializer
         {
 
             list = new List<IGameObject>();
-
+            
             GridCreator.Grid = GridCreator.CreateGrid(PointCreator.CreatePoints());
 
             var background = BaseGameObject.CreateStaticObject(AnimationType.MazeBlue, 0, 0);
 
-            var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null);
+            var tempList = PointCreator.CreatePoints().Select(GameObjectCreator.CreateOGameObject).Where(x => x != null).ToList();
 
             var pac = tempList.OfType<Pacman>().First();
 
@@ -34,21 +35,14 @@ namespace HTP_Project.CollectionInitializer
             {
                 Maze = (Background)background,
 
-                Blinky = tempList.OfType<Blinky>().First(),
-
-                Pinky = tempList.OfType<Pinky>().First(),
-
-                Inky = tempList.OfType<Inky>().First(),
-
-                Clyde = tempList.OfType<Clyde>().First()
+                Blinky = tempList.OfType<Blinky>().First()
+                
             };
-
+            
             pac.Arbiter = grandArbiter;
-
+            
             list.Add(background);
-
-            list.Add(grandArbiter);
-
+            
             list.AddRange(tempList);
 
             return list;

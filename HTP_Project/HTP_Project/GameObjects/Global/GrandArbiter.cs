@@ -1,12 +1,12 @@
-﻿using HTP_Project.GameObjects.BaseObjects;
-using HTP_Project.GameObjects.Enemies.Implementations;
+﻿using HTP_Project.GameObjects.Enemies.Implementations;
 using HTP_Project.GameObjects.StaticObjects;
 using System;
 
 namespace HTP_Project.GameObjects.Global
 {
-    class GrandArbiter : BaseGameObject
+    class GrandArbiter 
     {
+
         public Background Maze { get; set; }
 
         public Blinky Blinky { get; set; }
@@ -26,5 +26,6 @@ namespace HTP_Project.GameObjects.Global
            
         }
 
+        
     }
 }

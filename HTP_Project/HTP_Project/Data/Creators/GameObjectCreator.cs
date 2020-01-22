@@ -28,7 +28,7 @@ namespace HTP_Project.Data.Creators
                     res.Name = InitialData.Blinky.ToString();
                     break;
 
-                case InitialData.Inky:
+                /*case InitialData.Inky:
                     res = new Inky();
                     res.Animation.Location = point.Crdnt;
                     res.Name = InitialData.Inky.ToString();
@@ -44,7 +44,7 @@ namespace HTP_Project.Data.Creators
                     res = new Clyde();
                     res.Animation.Location = point.Crdnt;
                     res.Name = InitialData.Clyde.ToString();
-                    break;
+                    break;*/
 
                 case InitialData.BigCoin:
                     res = new BigCoin();
