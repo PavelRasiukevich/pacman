@@ -28,8 +28,7 @@ namespace HTP_Project.GameObjects.Protagonist
         public Pacman()
         {
             Animation = AnimationFactory.CreateAnimation(AnimationType.PacmanRight);
-
-            Animation.Location = new Coordinate(10000000, 20000000);
+            
         }
 
         public void Collide(IEnumerable<IGameObject> collisions)
@@ -62,46 +61,47 @@ namespace HTP_Project.GameObjects.Protagonist
                             switch (Arbiter.Blinky.Animation.AnimationType)
                             {
                                 case AnimationType.BlueGhost:
-                                    Arbiter.Blinky.BecomeEyes();
+                                   // Arbiter.Blinky.BecomeEyes();
                                     break;
                             }
                         }
                         else
                         {
-                            Speed = 0;
-
+                            
                             Animation deathAnimation = null;
+
+                            Speed = 0;
 
                             switch (Animation.AnimationType)
                             {
                                 case AnimationType.PacmanRight:
                                     deathAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathRight);
+                                   
                                     deathAnimation.Location = Animation.Location;
                                     break;
 
                                 case AnimationType.PacmanLeft:
                                     deathAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathLeft);
+                                    deathAnimation.Location = Animation.Location;
                                     break;
 
                                 case AnimationType.PacmanUp:
                                     deathAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathUp);
+                                    deathAnimation.Location = Animation.Location;
                                     break;
 
                                 case AnimationType.PacmanDown:
                                     deathAnimation = AnimationFactory.CreateAnimation(AnimationType.PacmanDeathDown);
+                                    deathAnimation.Location = Animation.Location;
                                     break;
 
                             }
-
-
+                            
                             Animation = deathAnimation;
                             deathAnimation.Location = Animation.Location;
 
 
                         }
-
-
-
 
                         break;
 

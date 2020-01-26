@@ -21,6 +21,9 @@ namespace HTP_Project.GameObjects.Global
 
         public DateTime CurrentTime { get; set; }
 
+        //hold value of small coin eaten
+        //public int Counter { get; set; }
+
         public GrandArbiter()
         {
            

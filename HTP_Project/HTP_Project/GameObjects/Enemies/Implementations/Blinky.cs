@@ -1,4 +1,5 @@
-﻿using HTP_Project.GameObjects.BaseObjects;
+﻿using HTP_Project.Data.Creators;
+using HTP_Project.GameObjects.BaseObjects;
 using HTP_Project.GameObjects.Enemies.Interfaces;
 using PacmanEngine.Components.Base;
 using PacmanEngine.Components.Graphics;
@@ -8,30 +9,42 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
 {
     class Blinky : BaseGameObject, IAntagonist
     {
-        readonly Animation currentA;
+      
+        public int Step = Coordinate.Multiplier / 25;
 
         public bool IsVulnerable { get; set; }
-        
+
         public Coordinate CurrentCoordinate { get; set; }
 
         public DateTime SecondsLater { get; set; }
 
         public Blinky()
         {
-          currentA =  Animation = AnimationFactory.CreateAnimation(AnimationType.BlinkyLeft);
+            Animation = AnimationFactory.CreateAnimation(AnimationType.BlinkyLeft);
             
         }
 
         public override void Update()
         {
-            if (DateTime.Now > SecondsLater)
+
+           
+
+            switch (Animation.AnimationType)
+            {
+                case AnimationType.BlinkyLeft:
+                  //Animation.Location -= new Coordinate(Step, 0);
+                    break;
+            }
+
+
+            /*if (DateTime.Now > SecondsLater)
             {
                 IsVulnerable = false;
 
                 Animation = currentA;
 
                 CurrentCoordinate = Animation.Location;
-            }
+            }*/
         }
 
         public void BecomeVulnerable()
@@ -48,10 +61,10 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
 
         }
 
-        public void BecomeEyes()
+        /*public void BecomeEyes()
         {
 
-            
+
             SecondsLater = DateTime.Now.AddSeconds(7d);
 
             //becomes eyes oriented in direction were move to
@@ -60,7 +73,7 @@ namespace HTP_Project.GameObjects.Enemies.Implementations
             Animation.Location = CurrentCoordinate;
 
 
-        }
+        }*/
 
 
 
